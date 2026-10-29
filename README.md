@@ -2,6 +2,10 @@
 
 A small always-on-top AI assistant for macOS. Ask a question, optionally with screenshots of your screen, and the answer streams in. Powered by OpenAI (GPT-5 mini by default).
 
+| Answering a screenshot | Settings |
+|---|---|
+| <img src="docs/screenshots/screenshot-question.png" alt="cluelyOSS answering a multiple choice question captured from the screen" width="360"> | <img src="docs/screenshots/settings.png" alt="cluelyOSS settings with API key, model, reasoning effort and token usage" width="360"> |
+
 ## Run
 
 Requires Node.js 18 or newer.
@@ -61,4 +65,4 @@ The answer style lives in [src/prompt.js](src/prompt.js).
 
 ## License
 
-Apache License 2.0. Derived from [OpenCluely](https://github.com/TechyCSR/OpenCluely); see [NOTICE](NOTICE).
+Apache License 2.0. See [LICENSE](LICENSE) and [NOTICE](NOTICE).
