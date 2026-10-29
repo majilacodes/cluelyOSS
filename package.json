@@ -1,0 +1,44 @@
+{
+  "name": "cluelyoss",
+  "productName": "cluelyOSS",
+  "version": "0.1.0",
+  "description": "A screenshot-aware AI assistant overlay for macOS.",
+  "main": "main.js",
+  "private": true,
+  "license": "Apache-2.0",
+  "author": "majilacodes",
+  "scripts": {
+    "start": "env -u ELECTRON_RUN_AS_NODE electron .",
+    "build": "electron-builder --mac"
+  },
+  "dependencies": {
+    "marked": "^15.0.12"
+  },
+  "devDependencies": {
+    "electron": "^29.1.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "dev.cluelyoss.app",
+    "productName": "cluelyOSS",
+    "files": [
+      "main.js",
+      "preload.js",
+      "src/**/*",
+      "renderer/**/*"
+    ],
+    "mac": {
+      "category": "public.app-category.productivity",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": ["arm64", "x64"]
+        }
+      ],
+      "extendInfo": {
+        "LSUIElement": true,
+        "NSScreenCaptureUsageDescription": "cluelyOSS captures your screen when you ask it to, so the AI can read what is on it."
+      }
+    }
+  }
+}

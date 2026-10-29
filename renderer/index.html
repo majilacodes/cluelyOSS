@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'" />
+  <title>cluelyOSS</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="../node_modules/marked/lib/marked.umd.js"></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header>
+    <span class="title">cluelyOSS</span>
+    <div class="actions">
+      <input id="opacity" type="range" min="30" max="100" step="1" value="100" title="Transparency" aria-label="Window opacity" />
+      <button id="newBtn" type="button" title="New chat">New</button>
+      <button id="shotBtn" type="button" title="Add a screenshot to this chat (⌘⇧A)">+ Screenshot</button>
+      <button id="settingsBtn" type="button" title="Settings">⚙</button>
+      <button id="hideBtn" type="button" title="Hide (⌘⇧V to toggle)">&times;</button>
+    </div>
+  </header>
+
+  <details id="shortcuts">
+    <summary>Shortcuts</summary>
+    <dl>
+      <dt>New chat with a screenshot</dt><dd>⌘⇧S</dd>
+      <dt>Add a screenshot to this chat</dt><dd>⌘⇧A</dd>
+      <dt>Show / hide window</dt><dd>⌘⇧V</dd>
+      <dt>Send message</dt><dd>Enter</dd>
+      <dt>New line</dt><dd>Shift+Enter</dd>
+      <dt>Quit (while window is focused)</dt><dd>⌘Q</dd>
+    </dl>
+  </details>
+
+  <main id="scroll">
+    <p id="empty">Type a question, or press ⌘⇧S to capture your screen first.</p>
+    <div id="thread"></div>
+  </main>
+
+  <footer>
+    <p id="status" hidden></p>
+    <div id="tray" hidden></div>
+    <form id="composer">
+      <textarea id="input" rows="1" placeholder="Ask anything (Enter to send)"></textarea>
+      <button id="sendBtn" type="submit">Send</button>
+    </form>
+  </footer>
+
+  <section id="settings" hidden>
+    <h2>Settings</h2>
+    <label>OpenAI API key
+      <input id="keyInput" type="password" autocomplete="off" spellcheck="false" />
+    </label>
+    <label>Model
+      <input id="modelInput" type="text" spellcheck="false" />
+    </label>
+    <label>Reasoning effort
+      <select id="effortSelect"></select>
+    </label>
+    <p class="hint">Higher effort gives better answers on hard problems but takes longer.</p>
+    <div class="row">
+      <button id="saveSettings" type="button">Save</button>
+      <button id="cancelSettings" type="button">Cancel</button>
+    </div>
+
+    <div class="usage">
+      <h2>Token usage</h2>
+      <dl>
+        <dt>Answers</dt><dd id="usageRequests"></dd>
+        <dt>Input tokens</dt><dd id="usageInput"></dd>
+        <dt>Output tokens</dt><dd id="usageOutput"></dd>
+        <dt>of which reasoning</dt><dd id="usageReasoning"></dd>
+      </dl>
+      <p class="hint" id="usageSince"></p>
+      <button id="resetUsage" type="button">Reset</button>
+    </div>
+    <button id="quitBtn" class="quit" type="button">Quit cluelyOSS</button>
+  </section>
+
+  <div id="viewer" hidden><img id="viewerImg" alt="Screenshot" /></div>
+</body>
+</html>
